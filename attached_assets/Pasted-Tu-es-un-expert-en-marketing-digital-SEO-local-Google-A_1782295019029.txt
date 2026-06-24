@@ -1,0 +1,351 @@
+Tu es un expert en marketing digital, SEO local, Google Ads, UX/UI, climatisation, pompes à chaleur et génération de leads.
+
+Ta mission est de concevoir une marque et un site web complet nommé POINT CLIM destiné à devenir une référence de la climatisation et des pompes à chaleur en Île-de-France.
+
+ATTENTION :
+
+Je ne veux pas un simple site vitrine.
+
+Je veux une machine à générer des devis.
+
+Je veux un site conçu pour :
+- Google SEO
+- Google Ads
+- Conversion
+- WhatsApp
+- Appels téléphoniques
+- Formulaires de devis
+
+Le site doit inspirer confiance immédiatement.
+
+======================================
+CONTEXTE DE L'ENTREPRISE
+======================================
+
+Nom :
+POINT CLIM
+
+Zone d'intervention :
+Toute l'Île-de-France
+
+Départements :
+
+- Paris (75)
+- Seine-et-Marne (77)
+- Yvelines (78)
+- Essonne (91)
+- Hauts-de-Seine (92)
+- Seine-Saint-Denis (93)
+- Val-de-Marne (94)
+- Val-d'Oise (95)
+
+L'entreprise réalise :
+
+- Installation de climatisation
+- Entretien de climatisation
+- Dépannage de climatisation
+- Installation de pompes à chaleur
+- Entretien de pompes à chaleur
+- Dépannage de pompes à chaleur
+- Contrats de maintenance
+- Solutions pour entreprises
+- Solutions pour particuliers
+
+======================================
+CLIENTS CIBLES
+======================================
+
+Particuliers :
+
+- Maison individuelle
+- Appartement
+- Résidence principale
+- Résidence secondaire
+
+Professionnels :
+
+- Restaurants
+- Boulangeries
+- Boucheries
+- Pharmacies
+- Cabinets médicaux
+- Cabinets dentaires
+- Bureaux
+- Commerces
+- Hôtels
+- Syndics
+- Copropriétés
+- PME
+- Entrepôts
+
+======================================
+POSITIONNEMENT
+======================================
+
+Je veux un positionnement premium.
+
+Le visiteur doit ressentir :
+
+- Professionnalisme
+- Réactivité
+- Confiance
+- Expertise
+- Sérieux
+
+Je ne veux pas un site artisanal.
+
+Je veux un rendu proche d'une marque nationale.
+
+======================================
+IDENTITÉ VISUELLE
+======================================
+
+Créer une identité complète :
+
+- Logo
+- Couleurs
+- Typographies
+- Icônes
+- Style graphique
+
+Couleurs :
+
+- Blanc dominant
+- Bleu premium
+- Bleu clair
+- Gris clair
+
+Éviter :
+
+- Noir dominant
+- Design industriel
+- Style informatique
+- Style startup IA
+
+======================================
+IMAGES
+======================================
+
+Utiliser uniquement :
+
+- Photos réelles
+- Techniciens réels
+- Climatisations réelles
+- Pompes à chaleur réelles
+- Bureaux réels
+- Commerces réels
+
+Interdiction :
+
+- Images IA
+- Illustrations artificielles
+- Faux rendus
+
+======================================
+VIDÉO
+======================================
+
+Prévoir une vidéo YouTube intégrée.
+
+Sujet :
+
+- Installation climatisation
+- Pompe à chaleur
+- Maintenance
+- Dépannage
+
+La vidéo doit être intégrée élégamment dans la page d'accueil.
+
+======================================
+ARBORESCENCE DU SITE
+======================================
+
+Créer :
+
+Accueil
+
+Installation climatisation
+
+Climatisation réversible
+
+Pompes à chaleur
+
+Entretien climatisation
+
+Entretien pompe à chaleur
+
+Dépannage climatisation
+
+Dépannage pompe à chaleur
+
+Contrat de maintenance
+
+Climatisation entreprises
+
+Réalisations
+
+Zones d'intervention
+
+Qui sommes-nous
+
+Contact
+
+Mentions légales
+
+Politique de confidentialité
+
+======================================
+SEO
+======================================
+
+Créer une stratégie SEO complète.
+
+Produire :
+
+- Titres SEO
+- Meta descriptions
+- H1
+- H2
+- H3
+
+Créer les pages départementales :
+
+Climatisation Paris
+
+Climatisation Seine-et-Marne
+
+Climatisation Yvelines
+
+Climatisation Essonne
+
+Climatisation Hauts-de-Seine
+
+Climatisation Seine-Saint-Denis
+
+Climatisation Val-de-Marne
+
+Climatisation Val-d'Oise
+
+Créer également des pages villes :
+
+Massy
+
+Évry-Courcouronnes
+
+Corbeil-Essonnes
+
+Palaiseau
+
+Melun
+
+Moissy-Cramayel
+
+Combs-la-Ville
+
+Meaux
+
+Créteil
+
+Versailles
+
+Nanterre
+
+Boulogne-Billancourt
+
+Saint-Denis
+
+Argenteuil
+
+Fontainebleau
+
+Brie-Comte-Robert
+
+Produire le contenu SEO de chacune.
+
+======================================
+GOOGLE ADS
+======================================
+
+Créer :
+
+Campagne Installation Climatisation
+
+Campagne Pompe à Chaleur
+
+Campagne Entretien
+
+Campagne Dépannage
+
+Campagne Entreprises
+
+Créer :
+
+- Titres
+- Descriptions
+- Extensions
+- Mots-clés
+- Mots-clés négatifs
+
+======================================
+CONVERSION
+======================================
+
+Prévoir :
+
+Bouton WhatsApp fixe
+
+Bouton Appeler
+
+Demande de rappel
+
+Formulaire de devis
+
+CTA sur chaque section
+
+======================================
+QUI SOMMES-NOUS
+======================================
+
+Rédiger une présentation professionnelle.
+
+Ne pas inventer :
+
+- années d'expérience
+- nombre de clients
+- statistiques
+- certifications non confirmées
+
+Le texte doit inspirer confiance sans mentir.
+
+======================================
+MENTIONS LÉGALES
+======================================
+
+Prévoir les champs :
+
+Nom :
+POINT CLIM
+
+Email :
+contact@pointclim.fr
+
+Laisser les autres informations modifiables.
+
+======================================
+MISSION
+======================================
+
+Produire :
+
+1. L'identité de marque complète.
+2. La structure du site.
+3. Le contenu de toutes les pages.
+4. La stratégie SEO.
+5. La stratégie Google Ads.
+6. Les textes commerciaux.
+7. Les CTA.
+8. Les FAQ.
+9. Les pages locales.
+10. Les idées de contenu Google Business Profile.
+
+Je veux une réponse extrêmement détaillée, structurée et exploitable immédiatement.
