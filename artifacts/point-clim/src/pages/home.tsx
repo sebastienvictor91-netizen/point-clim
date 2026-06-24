@@ -6,7 +6,7 @@ import { Simulator } from "@/components/simulator";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { Shield, Clock, Award, CheckCircle2, ChevronRight, Phone, MessageCircle, Star } from "lucide-react";
+import { Shield, Clock, Award, CheckCircle2, ChevronRight, Phone, MessageCircle, Star, Zap, Leaf, Users } from "lucide-react";
 import { SERVICES, DEPARTMENTS } from "@/data/content";
 import {
   Accordion,
@@ -15,41 +15,71 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
-
 const TESTIMONIALS = [
   {
     name: "Laurent M.",
     role: "Particulier",
     location: "Paris 15e",
-    text: "Équipe très professionnelle. L'installation de ma climatisation réversible s'est parfaitement déroulée. Chantier propre, explications claires et tarif transparent. Je recommande sans hésiter."
+    text: "Équipe très professionnelle. L'installation de ma climatisation réversible s'est parfaitement déroulée. Chantier propre, explications claires et tarif transparent."
   },
   {
     name: "Karim B.",
     role: "Gérant de restaurant",
     location: "Hauts-de-Seine",
-    text: "Intervention en urgence pour une panne de climatisation en plein été. Le technicien est arrivé rapidement et a tout remis en ordre en deux heures. Professionnalisme exemplaire."
+    text: "Intervention en urgence pour une panne en plein été. Le technicien est arrivé rapidement et tout a été remis en ordre en deux heures. Professionnalisme exemplaire."
   },
   {
     name: "Isabelle C.",
     role: "Pharmacienne",
     location: "Essonne",
-    text: "Nous avons fait appel à POINT CLIM pour l'installation de notre système de climatisation. Le résultat est impeccable, discret et silencieux. Notre équipe et nos clients apprécient la différence."
+    text: "Système installé discrètement, silencieux et efficace. Notre équipe et nos clients apprécient la différence de confort. Je recommande sans hésitation."
   },
   {
     name: "Marc T.",
     role: "Syndic de copropriété",
     location: "Yvelines",
-    text: "Nous avons confié la maintenance de nos installations à POINT CLIM. Un contrat clair, un suivi rigoureux et des techniciens toujours disponibles. La qualité de service est au rendez-vous."
+    text: "Contrat de maintenance sérieux, techniciens toujours disponibles et réactifs. Un partenaire de confiance pour notre immeuble."
   },
   {
     name: "Nathalie R.",
-    role: "Directrice de bureau",
+    role: "Directrice",
     location: "Seine-Saint-Denis",
-    text: "POINT CLIM a installé un système de climatisation dans nos locaux. Travaux réalisés un week-end pour ne pas perturber notre activité. Résultat parfait, équipe à l'écoute."
+    text: "Installation réalisée un week-end pour ne pas perturber notre activité. Résultat parfait, équipe à l'écoute et très propre. Exactement ce qu'on attendait."
+  }
+];
+
+const FAQ = [
+  {
+    q: "Quels sont vos délais d'intervention ?",
+    a: "Pour une panne ou une urgence, nous intervenons dans les 24h à 48h. Pour une installation, un devis est établi rapidement et les travaux planifiés selon vos disponibilités."
+  },
+  {
+    q: "Vos devis sont-ils gratuits ?",
+    a: "Oui, tous nos devis sont gratuits et sans engagement. Contactez-nous par téléphone, WhatsApp ou formulaire."
+  },
+  {
+    q: "Intervenez-vous pour les entreprises et commerces ?",
+    a: "Oui — restaurants, pharmacies, cabinets médicaux, bureaux, entrepôts, hôtels, copropriétés. Nous maîtrisons les contraintes spécifiques aux locaux professionnels."
+  },
+  {
+    q: "Avec quelles marques travaillez-vous ?",
+    a: "Nous sommes indépendants et travaillons avec Daikin, Mitsubishi Electric, Toshiba, Panasonic, Atlantic et d'autres grandes marques selon votre budget et vos besoins."
+  },
+  {
+    q: "Pouvez-vous m'aider à obtenir des aides de l'État ?",
+    a: "Nous vous informons sur les aides disponibles (MaPrimeRénov', CEE, TVA réduite) applicables à votre situation. Demandez-nous lors de votre devis."
+  },
+  {
+    q: "Dans quels départements intervenez-vous ?",
+    a: "Toute l'Île-de-France : Paris (75), Seine-et-Marne (77), Yvelines (78), Essonne (91), Hauts-de-Seine (92), Seine-Saint-Denis (93), Val-de-Marne (94), Val-d'Oise (95)."
+  },
+  {
+    q: "Comment se déroule une installation de climatisation ?",
+    a: "Après échange sur votre projet, nos techniciens posent les unités intérieure et extérieure, réalisent les liaisons frigorifiques et les raccordements électriques. Chantier propre garanti."
+  },
+  {
+    q: "Quelles garanties offrez-vous ?",
+    a: "Garantie constructeur sur le matériel et garantie sur notre main d'œuvre. Les détails vous sont communiqués dans votre devis."
   }
 ];
 
@@ -58,293 +88,392 @@ export default function Home() {
     <Layout>
       <SEO
         title="POINT CLIM | Expert Climatisation & Pompe à Chaleur Île-de-France"
-        description="Installation, entretien et dépannage de climatisation et pompes à chaleur en Île-de-France. Devis gratuit, intervention rapide, particuliers et professionnels."
+        description="Installation, entretien et dépannage de climatisation et pompes à chaleur en Île-de-France. 38°C dehors. 24°C chez vous. Devis gratuit, intervention rapide."
       />
 
-      {/* HERO SECTION */}
-      <section className="relative min-h-[92vh] flex items-center pt-20 pb-16 overflow-hidden">
+      {/* ─── HERO ─────────────────────────────────────────────── */}
+      <section className="relative min-h-screen flex items-end pb-20 pt-32 overflow-hidden">
+        {/* Background photo — beautiful modern living room */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1527689638836-411945a2b57c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
-            alt="Installation climatisation en Île-de-France"
+            src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=90"
+            alt="Intérieur moderne et confortable"
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/80 to-foreground/40"></div>
+          {/* Refined gradient — dark bottom-left, transparent top-right to reveal the room */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-black/10"></div>
         </div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
-            <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
-              <div className="inline-block px-4 py-1.5 rounded-full bg-primary/30 backdrop-blur-sm border border-primary/40 text-white text-sm font-semibold mb-6">
-                Intervention dans toute l'Île-de-France (75, 77, 78, 91, 92, 93, 94, 95)
+            {/* Eyebrow */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="flex items-center gap-3 mb-8"
+            >
+              <div className="h-px w-8 bg-primary"></div>
+              <span className="text-sm font-semibold uppercase tracking-widest text-primary">
+                Île-de-France · 75 · 77 · 78 · 91 · 92 · 93 · 94 · 95
+              </span>
+            </motion.div>
+
+            {/* Main headline — Apple-style large impact */}
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="font-heading font-bold text-white leading-[1.05] mb-6"
+              style={{ fontSize: "clamp(3rem, 7vw, 5.5rem)" }}
+            >
+              38°C dehors.<br />
+              <span className="text-primary">24°C</span> chez vous.
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="text-lg md:text-xl text-white/70 mb-10 max-w-xl font-light leading-relaxed"
+            >
+              Votre confort thermique partout en Île-de-France. Installation, entretien et dépannage de climatisation et pompes à chaleur.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-wrap gap-3"
+            >
+              <Button
+                size="lg"
+                className="h-14 px-8 rounded-full text-base font-semibold shadow-2xl hover:scale-[1.02] transition-transform"
+                onClick={() => document.getElementById('devis')?.scrollIntoView({ behavior: 'smooth' })}
+                data-testid="button-hero-devis"
+              >
+                Obtenir mon devis gratuit
+              </Button>
+              <Button
+                size="lg"
+                className="h-14 px-8 rounded-full text-base font-semibold bg-[#25D366] hover:bg-[#22c55e] text-white shadow-2xl hover:scale-[1.02] transition-transform border-0"
+                asChild
+              >
+                <a href="https://wa.me/33100000000" target="_blank" rel="noopener noreferrer" data-testid="button-hero-whatsapp">
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  WhatsApp
+                </a>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-14 px-8 rounded-full text-base font-semibold bg-white/10 hover:bg-white/20 text-white border-white/25 backdrop-blur-sm"
+                asChild
+              >
+                <a href="tel:+33100000000" data-testid="button-hero-call">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Appeler
+                </a>
+              </Button>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="absolute bottom-8 right-8 z-10 hidden md:flex flex-col items-center gap-2"
+        >
+          <div className="w-px h-12 bg-white/30 relative overflow-hidden">
+            <motion.div
+              className="absolute top-0 w-full h-1/2 bg-white/60"
+              animate={{ y: ["-100%", "200%"] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+            />
+          </div>
+        </motion.div>
+      </section>
+
+      {/* ─── TRUST STRIP ──────────────────────────────────────── */}
+      <section className="bg-white border-b border-gray-100">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100">
+            {[
+              { icon: Clock, label: "Intervention rapide", sub: "Dépannage 7j/7" },
+              { icon: Shield, label: "Devis gratuit", sub: "Transparent & sans engagement" },
+              { icon: Award, label: "Certifié RGE", sub: "QualiPAC & QualiClima" },
+              { icon: CheckCircle2, label: "Garantie", sub: "Pièces & main d'œuvre" },
+            ].map(({ icon: Icon, label, sub }, i) => (
+              <div key={i} className="flex items-center gap-4 py-6 px-6">
+                <div className="w-10 h-10 rounded-xl bg-primary/8 flex items-center justify-center text-primary flex-shrink-0">
+                  <Icon className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="font-semibold text-foreground text-sm">{label}</div>
+                  <div className="text-xs text-gray-400 mt-0.5">{sub}</div>
+                </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <div className="inline-block px-3 py-1 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white/80 text-sm font-medium mb-4">
-                40°C dehors. 24°C chez vous.
+      {/* ─── WEATHER COMPARISON ───────────────────────────────── */}
+      <WeatherSection />
+
+      {/* ─── SERVICES ─────────────────────────────────────────── */}
+      <section className="py-28 bg-white">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="mb-16"
+          >
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-4">Ce que nous faisons</p>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground leading-tight">
+              Des solutions<br />pour chaque besoin.
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {SERVICES.slice(0, 6).map((service, index) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+              >
+                <Link
+                  href={service.path}
+                  className="group block bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full"
+                  data-testid={`link-service-${service.id}`}
+                >
+                  <div className="h-52 overflow-hidden">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-heading font-bold text-foreground mb-2 group-hover:text-primary transition-colors">{service.title}</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed mb-4">{service.description}</p>
+                    <span className="inline-flex items-center text-primary text-sm font-semibold">
+                      Découvrir <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── SIMULATOR ─────────────────────────────────────────── */}
+      <Simulator />
+
+      {/* ─── WHY US ──────────────────────────────────────────── */}
+      <section className="py-28 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-4">Notre engagement</p>
+              <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground leading-tight mb-8">
+                Pourquoi POINT CLIM ?
+              </h2>
+              <div className="space-y-8">
+                {[
+                  {
+                    icon: Zap,
+                    title: "Réactivité",
+                    desc: "Intervention rapide en cas de panne. Devis transmis le jour même lorsque le dossier est complet."
+                  },
+                  {
+                    icon: Users,
+                    title: "Particuliers & professionnels",
+                    desc: "Maisons, appartements, restaurants, pharmacies, bureaux, entrepôts — nous maîtrisons tous les environnements."
+                  },
+                  {
+                    icon: Leaf,
+                    title: "Solutions durables",
+                    desc: "Pompes à chaleur, systèmes réversibles, équipements certifiés. Confort et économies d'énergie sur le long terme."
+                  },
+                  {
+                    icon: Shield,
+                    title: "Travail soigné",
+                    desc: "Finitions impeccables, chantier nettoyé, techniciens qualifiés et formés aux dernières technologies."
+                  }
+                ].map(({ icon: Icon, title, desc }) => (
+                  <div key={title} className="flex gap-5">
+                    <div className="w-11 h-11 rounded-xl bg-primary/8 flex-shrink-0 flex items-center justify-center text-primary mt-0.5">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-heading font-bold text-foreground mb-1.5">{title}</h3>
+                      <p className="text-gray-500 leading-relaxed">{desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
+            </motion.div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white leading-tight mb-6">
-                Installation, entretien et dépannage de climatisation et pompes à chaleur en Île-de-France
-              </h1>
-              <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl leading-relaxed">
-                Intervention rapide auprès des particuliers, commerces, bureaux, restaurants, copropriétés et entreprises. Devis gratuit et sans engagement.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="h-14 px-8 text-base font-bold rounded-xl bg-primary hover:bg-primary/90 text-white shadow-lg"
-                  onClick={() => document.getElementById('devis')?.scrollIntoView({ behavior: 'smooth' })}
-                  data-testid="button-hero-devis"
-                >
-                  Obtenir mon devis aujourd'hui
-                </Button>
-                <Button
-                  size="lg"
-                  className="h-14 px-8 text-base font-bold rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-lg"
-                  asChild
-                >
-                  <a href="https://wa.me/33100000000" target="_blank" rel="noopener noreferrer" data-testid="button-hero-whatsapp">
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    WhatsApp
-                  </a>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="h-14 px-8 text-base font-bold rounded-xl bg-white/10 hover:bg-white/20 text-white border-white/30 backdrop-blur-sm"
-                  asChild
-                >
-                  <a href="tel:+33100000000" data-testid="button-hero-call">
-                    <Phone className="w-5 h-5 mr-2" />
-                    Appeler maintenant
-                  </a>
-                </Button>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="relative"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=85"
+                alt="Intérieur confortable avec climatisation"
+                className="rounded-3xl shadow-2xl w-full object-cover aspect-[4/5]"
+              />
+              {/* Floating badge */}
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-5 border border-gray-100">
+                <div className="text-2xl font-heading font-bold text-foreground">Île-de-France</div>
+                <div className="text-sm text-gray-400 mt-0.5">8 départements couverts</div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* TRUST BAR */}
-      <section className="bg-white border-b border-gray-100 py-8 relative z-20 -mt-10 mx-4 md:mx-auto container rounded-2xl shadow-xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-4 md:px-8">
-          {[
-            { icon: Clock, title: "Intervention rapide", sub: "Dépannage 7j/7" },
-            { icon: Shield, title: "Devis gratuit", sub: "Transparent et détaillé" },
-            { icon: Award, title: "Certifié RGE", sub: "QualiPAC & QualiClima" },
-            { icon: CheckCircle2, title: "Garantie", sub: "Pièces et main d'œuvre" },
-          ].map(({ icon: Icon, title, sub }) => (
-            <div key={title} className="flex flex-col items-center text-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                <Icon className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground">{title}</h4>
-                <p className="text-xs text-gray-500">{sub}</p>
-              </div>
-            </div>
-          ))}
+      {/* ─── QUOTE FORM ─────────────────────────────────────── */}
+      <section id="devis" className="py-28 bg-[#f7f9fc]">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="text-center mb-12"
+            >
+              <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-4">Gratuit & sans engagement</p>
+              <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground">Demandez votre devis</h2>
+            </motion.div>
+            <QuoteForm />
+          </div>
         </div>
       </section>
 
-      {/* WEATHER SECTION */}
-      <WeatherSection />
-
-      {/* SERVICES GRID */}
-      <section className="py-24 bg-gray-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">Nos Services d'Expertise</h2>
-            <p className="text-gray-600 text-lg">
-              Des solutions complètes pour répondre à tous vos besoins en génie climatique, de l'installation à la maintenance.
-            </p>
+      {/* ─── VIDEO ───────────────────────────────────────────── */}
+      <section className="py-28 bg-foreground text-white">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="max-w-3xl mx-auto text-center mb-14"
+          >
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-4">Découvrir</p>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold leading-tight">
+              Le confort, ça se vit.
+            </h2>
+          </motion.div>
+          <div className="max-w-4xl mx-auto aspect-video rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              title="POINT CLIM — Confort thermique Île-de-France"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SERVICES.slice(0, 6).map((service, index) => (
+      {/* ─── ZONES ───────────────────────────────────────────── */}
+      <section className="py-28 bg-white">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="mb-14"
+          >
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-4">Couverture totale</p>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground">Toute l'Île-de-France.</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {DEPARTMENTS.map((dept, i) => (
               <motion.div
-                key={service.id}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: index * 0.1 } }
-                }}
-                className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-gray-100 flex flex-col h-full group"
+                key={dept.num}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
               >
-                <div className="h-48 overflow-hidden relative">
-                  <div className="absolute inset-0 bg-foreground/20 group-hover:bg-transparent transition-colors z-10"></div>
-                  <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-heading font-bold text-foreground mb-3">{service.title}</h3>
-                  <p className="text-gray-600 mb-6 flex-1">{service.description}</p>
-                  <Link href={service.path} className="inline-flex items-center text-primary font-semibold hover:text-primary/80 transition-colors mt-auto">
-                    En savoir plus <ChevronRight className="w-4 h-4 ml-1" />
-                  </Link>
-                </div>
+                <Link
+                  href={dept.path}
+                  className="group flex flex-col items-start p-6 rounded-2xl border border-gray-100 hover:border-primary/30 hover:bg-primary/3 transition-all"
+                  data-testid={`link-dept-${dept.num}`}
+                >
+                  <div className="text-4xl font-heading font-bold text-gray-100 group-hover:text-primary/20 transition-colors mb-2">{dept.num}</div>
+                  <div className="font-semibold text-foreground text-sm">{dept.name}</div>
+                  <div className="text-xs text-primary font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                    Voir la page <ChevronRight className="w-3 h-3" />
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SIMULATOR */}
-      <Simulator />
+      {/* ─── TESTIMONIALS ────────────────────────────────────── */}
+      <section className="py-28 bg-[#f7f9fc]">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="mb-14"
+          >
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-4">Ce qu'ils disent</p>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground">Ils nous font confiance.</h2>
+          </motion.div>
 
-      {/* WHY CHOOSE US */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col lg:flex-row gap-16 items-center">
-            <div className="lg:w-1/2">
-              <img
-                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-                alt="Technicien POINT CLIM"
-                className="rounded-2xl shadow-2xl w-full"
-              />
-            </div>
-            <div className="lg:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
-                Pourquoi choisir POINT CLIM ?
-              </h2>
-              <p className="text-gray-600 text-lg mb-8">
-                Nous nous engageons à fournir des prestations de haute qualité, dans le respect des normes en vigueur et des délais annoncés.
-              </p>
-
-              <div className="space-y-6">
-                {[
-                  {
-                    icon: Shield,
-                    title: "Expertise certifiée",
-                    desc: "Nos techniciens sont qualifiés et régulièrement formés aux dernières technologies de climatisation et de pompes à chaleur."
-                  },
-                  {
-                    icon: Clock,
-                    title: "Réactivité absolue",
-                    desc: "Intervention rapide en cas de panne. Devis envoyé le jour même lorsque le dossier est complet."
-                  },
-                  {
-                    icon: CheckCircle2,
-                    title: "Travail soigné",
-                    desc: "Finitions impeccables et nettoyage complet du chantier après chaque intervention. Chez vous comme chez nous."
-                  },
-                  {
-                    icon: Award,
-                    title: "Particuliers et professionnels",
-                    desc: "Maisons, appartements, restaurants, pharmacies, bureaux, entrepôts : nous maîtrisons tous les environnements."
-                  }
-                ].map(({ icon: Icon, title, desc }) => (
-                  <div key={title} className="flex gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-secondary/10 flex-shrink-0 flex items-center justify-center text-primary">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-semibold text-foreground mb-1">{title}</h4>
-                      <p className="text-gray-600">{desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* QUOTE FORM SECTION */}
-      <section id="devis" className="py-24 bg-gray-50 relative">
-        <div className="absolute top-0 left-0 w-full h-1/2 bg-foreground z-0"></div>
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <QuoteForm />
-          </div>
-        </div>
-      </section>
-
-      {/* VIDEO SECTION */}
-      <section className="py-24 bg-foreground text-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">Découvrez notre savoir-faire</h2>
-            <p className="text-gray-300 text-lg">
-              Suivez nos équipes sur le terrain et découvrez la qualité de nos installations de climatisation et pompes à chaleur.
-            </p>
-          </div>
-          <div className="max-w-4xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              title="Installation climatisation POINT CLIM"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full h-full"
-            ></iframe>
-          </div>
-        </div>
-      </section>
-
-      {/* AREAS SECTION */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">Nos Zones d'Intervention</h2>
-            <p className="text-gray-600 text-lg">
-              Toute l'Île-de-France couverte pour un service de proximité dans votre département.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {DEPARTMENTS.map((dept) => (
-              <Link
-                key={dept.num}
-                href={dept.path}
-                className="p-6 rounded-xl border border-gray-100 bg-gray-50 hover:bg-primary/5 hover:border-primary/20 transition-all text-center group"
-                data-testid={`link-dept-${dept.num}`}
-              >
-                <div className="text-3xl font-bold text-primary mb-2 opacity-40 group-hover:opacity-100 transition-opacity">{dept.num}</div>
-                <div className="font-semibold text-foreground text-sm">{dept.name}</div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="py-24 bg-gray-50">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">Avis de nos clients</h2>
-            <p className="text-gray-600 text-lg">
-              La satisfaction de nos clients est notre meilleure référence.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((review, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {TESTIMONIALS.map((r, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col"
+                className="bg-white rounded-2xl p-7 border border-gray-100 flex flex-col"
               >
-                <div className="flex text-yellow-400 mb-4">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className="w-5 h-5 fill-current" />
-                  ))}
+                <div className="flex text-amber-400 mb-5">
+                  {[...Array(5)].map((_, s) => <Star key={s} className="w-4 h-4 fill-current" />)}
                 </div>
-                <p className="text-gray-600 mb-6 italic flex-1">"{review.text}"</p>
-                <div className="flex items-center gap-3 pt-4 border-t border-gray-50">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm flex-shrink-0">
-                    {review.name.charAt(0)}
+                <p className="text-gray-600 text-sm leading-relaxed flex-1 mb-6">"{r.text}"</p>
+                <div className="flex items-center gap-3 pt-5 border-t border-gray-50">
+                  <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm flex-shrink-0">
+                    {r.name.charAt(0)}
                   </div>
                   <div>
-                    <div className="font-semibold text-foreground">{review.name}</div>
-                    <div className="text-sm text-gray-500">{review.role} — {review.location}</div>
+                    <div className="font-semibold text-foreground text-sm">{r.name}</div>
+                    <div className="text-xs text-gray-400">{r.role} — {r.location}</div>
                   </div>
                 </div>
               </motion.div>
@@ -353,112 +482,106 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">Questions Fréquentes</h2>
-            <p className="text-gray-600 text-lg">
-              Tout ce que vous devez savoir avant de faire appel à nos services.
-            </p>
-          </div>
+      {/* ─── FAQ ─────────────────────────────────────────────── */}
+      <section className="py-28 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-4">FAQ</p>
+              <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground leading-tight mb-6">
+                Vos questions.<br />Nos réponses.
+              </h2>
+              <p className="text-gray-500 text-lg mb-8 leading-relaxed">
+                Tout ce que vous devez savoir avant de faire appel à nos services.
+              </p>
+              <Button
+                size="lg"
+                className="h-13 px-8 rounded-full font-semibold"
+                onClick={() => document.getElementById('devis')?.scrollIntoView({ behavior: 'smooth' })}
+                data-testid="button-faq-cta"
+              >
+                Demander un devis
+              </Button>
+            </motion.div>
 
-          <div className="max-w-3xl mx-auto">
-            <Accordion type="single" collapsible className="w-full">
-              {[
-                {
-                  q: "Quels sont vos délais d'intervention ?",
-                  a: "Pour une panne ou une urgence, nous intervenons dans les 24h à 48h selon la nature du problème. Pour une installation neuve, un devis est établi rapidement après échange téléphonique ou visite, et les travaux sont planifiés selon vos disponibilités."
-                },
-                {
-                  q: "Vos devis sont-ils gratuits ?",
-                  a: "Oui, tous nos devis sont gratuits et sans engagement. Contactez-nous par téléphone, WhatsApp ou via notre formulaire, et nous vous répondons rapidement."
-                },
-                {
-                  q: "Intervenez-vous pour les entreprises et les commerces ?",
-                  a: "Oui. Nous travaillons aussi bien pour les particuliers que pour les professionnels : restaurants, pharmacies, cabinets médicaux, bureaux, entrepôts, hôtels, copropriétés. Nous avons l'habitude des contraintes spécifiques aux locaux professionnels."
-                },
-                {
-                  q: "Travaillez-vous avec des marques spécifiques ?",
-                  a: "En tant qu'experts indépendants, nous travaillons avec les grandes marques du marché (Daikin, Mitsubishi Electric, Toshiba, Panasonic, Atlantic…) pour vous garantir un matériel fiable adapté à votre budget."
-                },
-                {
-                  q: "Quelles garanties offrez-vous ?",
-                  a: "Vous bénéficiez de la garantie constructeur sur le matériel ainsi que d'une garantie sur notre main d'œuvre. Nous vous communiquons les détails précis lors de l'établissement de votre devis."
-                },
-                {
-                  q: "Pouvez-vous m'aider à obtenir des aides de l'État ?",
-                  a: "Nous vous informons sur les aides disponibles (MaPrimeRénov', CEE, TVA réduite...) applicables à votre projet. Consultez-nous pour connaître votre situation précise."
-                },
-                {
-                  q: "Dans quels départements intervenez-vous ?",
-                  a: "Nous intervenons dans toute l'Île-de-France : Paris (75), Seine-et-Marne (77), Yvelines (78), Essonne (91), Hauts-de-Seine (92), Seine-Saint-Denis (93), Val-de-Marne (94) et Val-d'Oise (95)."
-                },
-                {
-                  q: "Comment se déroule une installation de climatisation ?",
-                  a: "Après un échange pour comprendre votre besoin et définir la solution adaptée, nos techniciens interviennent pour l'installation. Les travaux comprennent la pose des unités intérieure et extérieure, le passage de liaisons frigorifiques et les raccordements électriques. Nous veillons à laisser votre espace propre à la fin du chantier."
-                }
-              ].map((item, i) => (
-                <AccordionItem key={i} value={`item-${i}`}>
-                  <AccordionTrigger className="text-left font-semibold text-base md:text-lg py-5">
-                    {item.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-gray-600 text-base pb-5">
-                    {item.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+            <div>
+              <Accordion type="single" collapsible className="w-full">
+                {FAQ.map((item, i) => (
+                  <AccordionItem key={i} value={`item-${i}`} className="border-b border-gray-100 last:border-0">
+                    <AccordionTrigger className="text-left font-semibold text-base py-5 hover:text-primary hover:no-underline transition-colors">
+                      {item.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-500 text-sm leading-relaxed pb-5">
+                      {item.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* FINAL CTA BANNER */}
-      <section className="py-24 bg-primary relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-10">
-          <div className="absolute -top-24 -left-24 w-96 h-96 bg-white rounded-full mix-blend-overlay filter blur-3xl"></div>
-          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-300 rounded-full mix-blend-overlay filter blur-3xl"></div>
+      {/* ─── FINAL CTA ─────────────────────────────────────── */}
+      <section className="relative py-32 overflow-hidden bg-foreground">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+            alt="Confort thermique"
+            className="w-full h-full object-cover opacity-10"
+          />
         </div>
-
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
-            Prêt à améliorer votre confort ?
-          </h2>
-          <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            Demandez votre devis gratuit aujourd'hui. Nos experts vous répondent rapidement.
-          </p>
-
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button
-              size="lg"
-              className="h-14 px-8 text-base font-bold rounded-xl bg-white text-primary hover:bg-gray-100 shadow-xl"
-              onClick={() => document.getElementById('devis')?.scrollIntoView({ behavior: 'smooth' })}
-              data-testid="button-finalcta-devis"
-            >
-              Demander mon devis en ligne
-            </Button>
-            <Button
-              size="lg"
-              className="h-14 px-8 text-base font-bold rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-xl"
-              asChild
-            >
-              <a href="https://wa.me/33100000000" target="_blank" rel="noopener noreferrer" data-testid="button-finalcta-whatsapp">
-                <MessageCircle className="w-5 h-5 mr-2" />
-                WhatsApp
-              </a>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="h-14 px-8 text-base font-bold rounded-xl bg-white/10 hover:bg-white/20 text-white border-white/30"
-              asChild
-            >
-              <a href="tel:+33100000000" data-testid="button-finalcta-call">
-                <Phone className="w-5 h-5 mr-2" />
-                Appeler maintenant
-              </a>
-            </Button>
-          </div>
+        <div className="container mx-auto px-6 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-6">Prêt à commencer ?</p>
+            <h2 className="text-4xl md:text-6xl font-heading font-bold text-white leading-tight mb-6">
+              Votre confort.<br />Notre priorité.
+            </h2>
+            <p className="text-xl text-white/50 mb-12 max-w-xl mx-auto font-light">
+              Demandez votre devis gratuit. Nos experts vous répondent rapidement.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button
+                size="lg"
+                className="h-14 px-10 rounded-full text-base font-semibold bg-white text-foreground hover:bg-gray-100 shadow-2xl"
+                onClick={() => document.getElementById('devis')?.scrollIntoView({ behavior: 'smooth' })}
+                data-testid="button-cta-devis"
+              >
+                Demander mon devis
+              </Button>
+              <Button
+                size="lg"
+                className="h-14 px-10 rounded-full text-base font-semibold bg-[#25D366] hover:bg-[#22c55e] text-white border-0"
+                asChild
+              >
+                <a href="https://wa.me/33100000000" target="_blank" rel="noopener noreferrer" data-testid="button-cta-whatsapp">
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  WhatsApp
+                </a>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-14 px-10 rounded-full text-base font-semibold bg-white/8 hover:bg-white/15 text-white border-white/20"
+                asChild
+              >
+                <a href="tel:+33100000000" data-testid="button-cta-call">
+                  <Phone className="w-5 h-5 mr-2" />
+                  01 00 00 00 00
+                </a>
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
     </Layout>
