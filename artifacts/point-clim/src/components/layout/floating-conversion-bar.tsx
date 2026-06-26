@@ -1,37 +1,53 @@
 import { Phone, MessageCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+
+const PHONE_DISPLAY = "01 75 29 52 34";
+const PHONE_LINK = "+33175295234";
+const WHATSAPP_URL =
+  "https://wa.me/33623558263?text=Bonjour,%20je%20souhaite%20obtenir%20un%20devis%20pour%20une%20climatisation.";
 
 export function FloatingConversionBar() {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:bottom-auto md:top-24 md:left-auto md:right-4 md:p-0 flex md:flex-col gap-3 justify-center bg-white/90 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none border-t md:border-none shadow-[0_-4px_20px_-10px_rgba(0,0,0,0.1)] md:shadow-none animate-in slide-in-from-bottom-10 md:slide-in-from-right-10 duration-500">
-      <a 
-        href="tel:+33100000000" 
-        data-testid="float-call"
-        className="flex-1 md:flex-none"
+    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3">
+      {/* Appel principal */}
+      <a
+        href={`tel:${PHONE_LINK}`}
+        aria-label="Appeler POINT CLIM"
+        className="group flex items-center gap-3 rounded-full bg-blue-600 px-5 py-4 text-white shadow-[0_18px_45px_rgba(37,99,235,0.35)] transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-[0_22px_55px_rgba(37,99,235,0.5)]"
       >
-        <Button 
-          size="lg" 
-          className="w-full rounded-full bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 animate-pulse-slow"
-        >
-          <Phone className="w-5 h-5 mr-2" />
-          <span className="md:hidden lg:inline">01 00 00 00 00</span>
-        </Button>
+        <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-blue-600">
+          <Phone className="h-6 w-6" />
+        </span>
+
+        <span className="hidden text-left leading-tight sm:block">
+          <span className="block text-xs font-semibold uppercase tracking-wide text-white/75">
+            Appel direct
+          </span>
+          <span className="block text-base font-extrabold">
+            {PHONE_DISPLAY}
+          </span>
+        </span>
       </a>
-      
-      <a 
-        href="https://wa.me/33100000000?text=Bonjour,%20je%20souhaite%20un%20devis%20pour..." 
-        target="_blank" 
+
+      {/* WhatsApp secondaire */}
+      <a
+        href={WHATSAPP_URL}
+        target="_blank"
         rel="noopener noreferrer"
-        data-testid="float-whatsapp"
-        className="flex-1 md:flex-none"
+        aria-label="Contacter POINT CLIM sur WhatsApp"
+        className="group flex items-center gap-3 rounded-full border border-emerald-200 bg-white px-5 py-3.5 text-slate-900 shadow-[0_14px_35px_rgba(15,23,42,0.16)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-[0_18px_45px_rgba(15,23,42,0.22)]"
       >
-        <Button 
-          size="lg" 
-          className="w-full rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-lg shadow-[#25D366]/20"
-        >
-          <MessageCircle className="w-5 h-5 mr-2" />
-          <span className="md:hidden lg:inline">WhatsApp</span>
-        </Button>
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white">
+          <MessageCircle className="h-5 w-5" />
+        </span>
+
+        <span className="hidden text-left leading-tight sm:block">
+          <span className="block text-xs font-semibold uppercase tracking-wide text-slate-400">
+            Message
+          </span>
+          <span className="block text-sm font-extrabold text-slate-900">
+            WhatsApp
+          </span>
+        </span>
       </a>
     </div>
   );

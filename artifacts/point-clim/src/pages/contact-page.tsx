@@ -42,7 +42,7 @@ export default function ContactPage() {
               <h3 className="text-xl font-bold mb-2">Via WhatsApp</h3>
               <p className="text-gray-500 mb-6 text-sm">Envoyez-nous un message ou des photos de votre installation.</p>
               <Button className="bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-full font-bold" asChild>
-                 <a href="https://wa.me/33100000000" target="_blank" rel="noopener noreferrer">
+                 <a href="https://wa.me/33623558263" target="_blank" rel="noopener noreferrer">
                   Démarrer la discussion
                  </a>
               </Button>
@@ -96,3 +96,4 @@ export default function ContactPage() {
     </Layout>
   );
 }
+
