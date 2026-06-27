@@ -25,7 +25,7 @@ export function FloatingConversionBar() {
             className="flex h-14 items-center justify-center gap-2 rounded-full bg-green-500 text-white font-black shadow-2xl"
           >
             <MessageCircle className="h-5 w-5" />
-            Réponse immédiate
+            Devis immédiat
           </a>
         </div>
       </div>
@@ -47,7 +47,7 @@ export function FloatingConversionBar() {
           className="flex items-center gap-3 rounded-full bg-green-500 px-5 py-4 text-white font-bold shadow-2xl"
         >
           <MessageCircle className="h-5 w-5" />
-          WhatsApp immédiat
+          Devis immédiat
         </a>
       </div>
     </>
