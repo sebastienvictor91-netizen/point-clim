@@ -281,7 +281,7 @@ export function Simulator() {
                       className="flex-1 h-12 font-bold rounded-xl border-primary text-primary hover:bg-primary/5"
                       asChild
                     >
-                      <a href="https://wa.me/33100000000" target="_blank" rel="noopener noreferrer" data-testid="button-simulator-whatsapp">
+                      <a href="https://wa.me/33623558263" target="_blank" rel="noopener noreferrer" data-testid="button-simulator-whatsapp">
                         Discuter sur WhatsApp
                       </a>
                     </Button>

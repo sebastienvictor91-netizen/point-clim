@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, Snowflake, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -9,15 +9,19 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+const PHONE_DISPLAY = "01 75 29 52 34";
+const PHONE_LINK = "+33175295234";
+const WHATSAPP_URL =
+  "https://wa.me/33623558263?text=Bonjour,%20je%20souhaite%20obtenir%20un%20devis%20pour%20une%20climatisation.";
+
 const services = [
   { name: "Installation climatisation", path: "/installation-climatisation" },
-  { name: "Climatisation réversible", path: "/climatisation-reversible" },
-  { name: "Pompes à chaleur", path: "/pompes-a-chaleur" },
-  { name: "Entretien climatisation", path: "/entretien-climatisation" },
-  { name: "Entretien pompe à chaleur", path: "/entretien-pompe-a-chaleur" },
   { name: "Dépannage climatisation", path: "/depannage-climatisation" },
-  { name: "Dépannage pompe à chaleur", path: "/depannage-pompe-a-chaleur" },
-  { name: "Contrat de maintenance", path: "/contrat-maintenance" },
+  { name: "Entretien climatisation", path: "/entretien-climatisation" },
+  { name: "Climatisation réversible", path: "/climatisation-reversible" },
+  { name: "Pompe à chaleur air/air", path: "/pompe-a-chaleur-air-air" },
+  { name: "Pompe à chaleur air/eau", path: "/pompe-a-chaleur-air-eau" },
+  { name: "Contrat maintenance", path: "/contrat-maintenance" },
   { name: "Solutions entreprises", path: "/climatisation-entreprises" },
 ];
 
@@ -37,141 +41,204 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 40);
+    const handleScroll = () => setIsScrolled(window.scrollY > 24);
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const headerClass = isScrolled
+    ? "bg-white/95 border-slate-200/70 shadow-sm backdrop-blur-2xl py-3"
+    : "bg-white/10 border-white/10 backdrop-blur-xl py-4";
+
+  const navText = isScrolled
+    ? "text-slate-700 hover:text-slate-950"
+    : "text-white/85 hover:text-white";
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-xl shadow-sm py-3 border-b border-black/5"
-          : "bg-transparent py-5"
-      }`}
-    >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group" data-testid="link-logo">
-          <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${isScrolled ? "bg-primary" : "bg-white/20 backdrop-blur-sm"}`}>
-            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white" aria-hidden="true">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7zm2 14H10v-1h4v1zm-4-3v-2.81l-.6-.4C7.98 9.07 7 7.6 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.68-.85 3.18-2.4 4.19l-.6.4V13z"/>
-            </svg>
+    <header className={`fixed left-0 right-0 top-0 z-40 border-b transition-all duration-300 ${headerClass}`}>
+      <div className="container mx-auto flex items-center justify-between px-4 md:px-6">
+        <Link href="/" className="group flex items-center gap-3" data-testid="link-logo">
+          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary shadow-lg shadow-primary/25 transition-transform duration-300 group-hover:scale-105">
+            <Snowflake className="h-6 w-6 text-white" />
           </div>
-          <span className={`font-heading font-bold text-xl tracking-tight transition-colors ${isScrolled ? "text-foreground" : "text-white"}`}>
-            POINT<span className={isScrolled ? "text-primary" : "text-white/70"}> CLIM</span>
-          </span>
+
+          <div className="leading-none">
+            <div className={`font-heading text-2xl font-black tracking-tight ${isScrolled ? "text-slate-950" : "text-white"}`}>
+              POINT <span className="text-primary">CLIM</span>
+            </div>
+            <div className={`mt-1 text-[10px] font-bold uppercase tracking-[0.22em] ${isScrolled ? "text-slate-500" : "text-white/65"}`}>
+              Climatisation • PAC
+            </div>
+          </div>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-7">
-          <Link
-            href="/"
-            className={`text-sm font-medium transition-colors ${isScrolled ? "text-foreground/70 hover:text-foreground" : "text-white/80 hover:text-white"}`}
-          >
+        <nav className="hidden items-center gap-8 lg:flex">
+          <Link href="/" className={`text-sm font-bold transition-colors ${navText}`}>
             Accueil
           </Link>
 
           <DropdownMenu>
-            <DropdownMenuTrigger className={`flex items-center gap-1 text-sm font-medium transition-colors focus:outline-none ${isScrolled ? "text-foreground/70 hover:text-foreground" : "text-white/80 hover:text-white"}`}>
-              Services <ChevronDown className="w-3.5 h-3.5 opacity-60" />
+            <DropdownMenuTrigger className={`flex items-center gap-1 text-sm font-bold transition-colors focus:outline-none ${navText}`}>
+              Services <ChevronDown className="h-4 w-4 opacity-60" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="center" className="w-60 mt-2">
+            <DropdownMenuContent align="center" className="mt-3 w-72 rounded-2xl border-slate-100 p-2 shadow-2xl">
               {services.map((s) => (
                 <DropdownMenuItem key={s.path} asChild>
-                  <Link href={s.path} className="w-full cursor-pointer">{s.name}</Link>
+                  <Link href={s.path} className="w-full cursor-pointer rounded-xl px-3 py-2.5 font-medium">
+                    {s.name}
+                  </Link>
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
+
+          <Link href="/depannage-climatisation" className={`text-sm font-bold transition-colors ${navText}`}>
+            Dépannage
+          </Link>
+
+          <Link href="/entretien-climatisation" className={`text-sm font-bold transition-colors ${navText}`}>
+            Entretien
+          </Link>
 
           <DropdownMenu>
-            <DropdownMenuTrigger className={`flex items-center gap-1 text-sm font-medium transition-colors focus:outline-none ${isScrolled ? "text-foreground/70 hover:text-foreground" : "text-white/80 hover:text-white"}`}>
-              Zones <ChevronDown className="w-3.5 h-3.5 opacity-60" />
+            <DropdownMenuTrigger className={`flex items-center gap-1 text-sm font-bold transition-colors focus:outline-none ${navText}`}>
+              Zones <ChevronDown className="h-4 w-4 opacity-60" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="center" className="w-60 mt-2">
+            <DropdownMenuContent align="center" className="mt-3 w-72 rounded-2xl border-slate-100 p-2 shadow-2xl">
               {zones.map((z) => (
                 <DropdownMenuItem key={z.path} asChild>
-                  <Link href={z.path} className="w-full cursor-pointer">{z.name}</Link>
+                  <Link href={z.path} className="w-full cursor-pointer rounded-xl px-3 py-2.5 font-medium">
+                    {z.name}
+                  </Link>
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Link
-            href="/qui-sommes-nous"
-            className={`text-sm font-medium transition-colors ${isScrolled ? "text-foreground/70 hover:text-foreground" : "text-white/80 hover:text-white"}`}
-          >
-            À propos
+          <Link href="/contact" className={`text-sm font-bold transition-colors ${navText}`}>
+            Contact
           </Link>
         </nav>
 
-        {/* Desktop CTAs */}
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden items-center gap-3 lg:flex">
           <a
-            href="tel:+33100000000"
+            href={`tel:${PHONE_LINK}`}
             data-testid="link-header-phone"
-            className={`flex items-center gap-2 text-sm font-semibold transition-colors ${isScrolled ? "text-foreground/70 hover:text-foreground" : "text-white/80 hover:text-white"}`}
+            className={`hidden xl:flex items-center gap-3 rounded-2xl px-4 py-2.5 transition-all ${
+              isScrolled
+                ? "bg-slate-100 text-slate-950 hover:bg-slate-200"
+                : "bg-white/12 text-white hover:bg-white/20"
+            }`}
           >
-            <Phone className="w-4 h-4" />
-            01 00 00 00 00
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-white">
+              <Phone className="h-4 w-4" />
+            </span>
+            <span className="leading-tight">
+              <span className={`block text-[10px] font-bold uppercase tracking-wider ${isScrolled ? "text-slate-500" : "text-white/60"}`}>
+                Appel direct
+              </span>
+              <span className="block text-sm font-black">{PHONE_DISPLAY}</span>
+            </span>
           </a>
+
           <Button
             asChild
             size="sm"
-            className={`rounded-full px-5 font-semibold shadow-none transition-all ${isScrolled ? "bg-primary text-white hover:bg-primary/90" : "bg-white text-foreground hover:bg-white/90"}`}
+            className={`h-12 rounded-2xl px-6 font-black shadow-lg transition-all hover:scale-[1.02] ${
+              isScrolled
+                ? "bg-primary text-white hover:bg-primary/90 shadow-primary/25"
+                : "bg-white text-slate-950 hover:bg-white/90 shadow-black/10"
+            }`}
           >
-            <Link href="/contact" data-testid="link-header-devis">Devis gratuit</Link>
+            <Link href="/contact" data-testid="link-header-devis">
+              Devis gratuit
+            </Link>
           </Button>
         </div>
 
-        {/* Mobile Toggle */}
         <button
-          className={`lg:hidden p-2 rounded-lg transition-colors ${isScrolled ? "text-foreground" : "text-white"}`}
+          className={`rounded-xl p-2 transition-colors lg:hidden ${
+            isScrolled ? "text-slate-950 hover:bg-slate-100" : "text-white hover:bg-white/10"
+          }`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           data-testid="button-mobile-menu"
           aria-label="Menu"
         >
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isMobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-100 shadow-2xl">
-          <div className="container mx-auto px-6 py-6 flex flex-col gap-1">
-            <Link href="/" className="py-3 font-medium text-foreground/80 border-b border-gray-50" onClick={() => setIsMobileMenuOpen(false)}>Accueil</Link>
+        <div className="absolute left-0 right-0 top-full border-t border-slate-100 bg-white shadow-2xl lg:hidden">
+          <div className="container mx-auto flex flex-col gap-4 px-5 py-6">
+            <div className="grid grid-cols-2 gap-3">
+              <a
+                href={`tel:${PHONE_LINK}`}
+                className="flex h-13 items-center justify-center gap-2 rounded-2xl bg-primary font-black text-white"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Phone className="h-4 w-4" />
+                Appeler
+              </a>
 
-            <div className="py-3 border-b border-gray-50">
-              <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Services</p>
-              <div className="grid grid-cols-1 gap-1">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-13 items-center justify-center gap-2 rounded-2xl bg-[#25D366] font-black text-white"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <MessageCircle className="h-4 w-4" />
+                WhatsApp
+              </a>
+            </div>
+
+            <Link href="/" className="rounded-xl px-4 py-3 font-bold text-slate-800 hover:bg-slate-50" onClick={() => setIsMobileMenuOpen(false)}>
+              Accueil
+            </Link>
+
+            <div>
+              <p className="mb-2 px-4 text-xs font-black uppercase tracking-widest text-slate-400">
+                Services
+              </p>
+              <div className="grid gap-1">
                 {services.map((s) => (
-                  <Link key={s.path} href={s.path} className="py-1.5 text-sm text-foreground/70 hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link
+                    key={s.path}
+                    href={s.path}
+                    className="rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-blue-50 hover:text-primary"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
                     {s.name}
                   </Link>
                 ))}
               </div>
             </div>
 
-            <div className="py-3 border-b border-gray-50">
-              <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Zones d'intervention</p>
-              <div className="flex flex-wrap gap-2">
+            <div>
+              <p className="mb-2 px-4 text-xs font-black uppercase tracking-widest text-slate-400">
+                Zones
+              </p>
+              <div className="flex flex-wrap gap-2 px-4">
                 {zones.map((z) => (
-                  <Link key={z.path} href={z.path} className="text-xs px-3 py-1 rounded-full border border-gray-200 text-foreground/60 hover:border-primary hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link
+                    key={z.path}
+                    href={z.path}
+                    className="rounded-full border border-slate-200 px-3 py-1.5 text-xs font-bold text-slate-600 hover:border-primary hover:text-primary"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
                     {z.name}
                   </Link>
                 ))}
               </div>
             </div>
 
-            <div className="pt-4 flex flex-col gap-3">
-              <a href="tel:+33100000000" className="flex items-center justify-center gap-2 h-12 rounded-xl border border-gray-200 font-semibold text-foreground" data-testid="link-mobile-call">
-                <Phone className="w-4 h-4" /> 01 00 00 00 00
-              </a>
-              <Button asChild className="h-12 rounded-xl font-semibold">
-                <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} data-testid="link-mobile-devis">Devis gratuit</Link>
-              </Button>
-            </div>
+            <Button asChild className="mt-2 h-12 rounded-2xl font-black">
+              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                Demander un devis gratuit
+              </Link>
+            </Button>
           </div>
         </div>
       )}

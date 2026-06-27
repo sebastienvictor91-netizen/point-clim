@@ -1,90 +1,132 @@
 import { Link } from "wouter";
-import { Snowflake, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Snowflake, Phone, Mail, Clock, MapPin, MessageCircle } from "lucide-react";
+
+const PHONE_DISPLAY = "01 75 29 52 34";
+const PHONE_LINK = "+33175295234";
+const WHATSAPP_URL =
+  "https://wa.me/33623558263?text=Bonjour,%20je%20souhaite%20obtenir%20un%20devis%20pour%20une%20climatisation.";
+const EMAIL = "contact@pointclim.fr";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-foreground text-white pt-16 pb-8">
+    <footer className="bg-slate-950 text-white pt-16 pb-8">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Brand */}
           <div>
-            <Link href="/" className="flex items-center gap-2 mb-6">
-              <Snowflake className="w-8 h-8 text-secondary" />
+            <Link href="/" className="flex items-center gap-3 mb-6">
+              <div className="w-11 h-11 rounded-2xl bg-primary flex items-center justify-center shadow-lg shadow-primary/25">
+                <Snowflake className="w-6 h-6 text-white" />
+              </div>
               <span className="font-heading font-extrabold text-2xl tracking-tight">
-                <span className="text-white">POINT</span>
-                <span className="text-secondary">CLIM</span>
+                <span className="text-white">POINT</span>{" "}
+                <span className="text-primary">CLIM</span>
               </span>
             </Link>
-            <p className="text-gray-400 mb-6 leading-relaxed">
-              L'expert en climatisation et pompes à chaleur pour particuliers et professionnels dans toute l'Île-de-France.
+
+            <p className="text-slate-400 mb-6 leading-relaxed">
+              Installation, entretien et dépannage de climatisation et pompes à chaleur en Île-de-France.
             </p>
-            <div className="flex gap-4">
-              <div className="flex items-center gap-2 text-sm font-semibold px-3 py-1 bg-white/10 rounded-full">
-                RGE QualiPAC
-              </div>
-              <div className="flex items-center gap-2 text-sm font-semibold px-3 py-1 bg-white/10 rounded-full">
-                QualiClima
-              </div>
+
+            <div className="flex flex-wrap gap-2">
+              <span className="text-xs font-bold px-3 py-2 bg-white/10 rounded-full border border-white/10">
+                Climatisation
+              </span>
+              <span className="text-xs font-bold px-3 py-2 bg-white/10 rounded-full border border-white/10">
+                Pompe à chaleur
+              </span>
+              <span className="text-xs font-bold px-3 py-2 bg-white/10 rounded-full border border-white/10">
+                Dépannage
+              </span>
             </div>
           </div>
 
-          {/* Services */}
           <div>
-            <h3 className="font-heading font-semibold text-lg mb-6 text-white border-b border-white/10 pb-2 inline-block">Nos Services</h3>
+            <h3 className="font-heading font-bold text-lg mb-6 text-white">
+              Nos services
+            </h3>
             <ul className="space-y-3">
-              <li><Link href="/installation-climatisation" className="text-gray-400 hover:text-secondary transition-colors">Installation de climatisation</Link></li>
-              <li><Link href="/pompes-a-chaleur" className="text-gray-400 hover:text-secondary transition-colors">Pompes à chaleur</Link></li>
-              <li><Link href="/entretien-climatisation" className="text-gray-400 hover:text-secondary transition-colors">Entretien & Maintenance</Link></li>
-              <li><Link href="/depannage-climatisation" className="text-gray-400 hover:text-secondary transition-colors">Dépannage d'urgence</Link></li>
-              <li><Link href="/climatisation-entreprises" className="text-gray-400 hover:text-secondary transition-colors">Solutions B2B</Link></li>
+              <li><Link href="/installation-climatisation" className="text-slate-400 hover:text-primary transition-colors">Installation climatisation</Link></li>
+              <li><Link href="/climatisation-reversible" className="text-slate-400 hover:text-primary transition-colors">Climatisation réversible</Link></li>
+              <li><Link href="/pompes-a-chaleur" className="text-slate-400 hover:text-primary transition-colors">Pompes à chaleur</Link></li>
+              <li><Link href="/entretien-climatisation" className="text-slate-400 hover:text-primary transition-colors">Entretien climatisation</Link></li>
+              <li><Link href="/depannage-climatisation" className="text-slate-400 hover:text-primary transition-colors">Dépannage urgent</Link></li>
             </ul>
           </div>
 
-          {/* Zones */}
           <div>
-            <h3 className="font-heading font-semibold text-lg mb-6 text-white border-b border-white/10 pb-2 inline-block">Zones d'intervention</h3>
+            <h3 className="font-heading font-bold text-lg mb-6 text-white">
+              Zones d’intervention
+            </h3>
             <ul className="space-y-3">
-              <li><Link href="/climatisation-paris" className="text-gray-400 hover:text-secondary transition-colors">Paris (75)</Link></li>
-              <li><Link href="/climatisation-hauts-de-seine" className="text-gray-400 hover:text-secondary transition-colors">Hauts-de-Seine (92)</Link></li>
-              <li><Link href="/climatisation-seine-saint-denis" className="text-gray-400 hover:text-secondary transition-colors">Seine-Saint-Denis (93)</Link></li>
-              <li><Link href="/climatisation-val-de-marne" className="text-gray-400 hover:text-secondary transition-colors">Val-de-Marne (94)</Link></li>
-              <li><Link href="/zones-intervention" className="text-secondary font-medium hover:text-white transition-colors">Voir les 8 départements →</Link></li>
+              <li><Link href="/climatisation-paris" className="text-slate-400 hover:text-primary transition-colors">Paris (75)</Link></li>
+              <li><Link href="/climatisation-hauts-de-seine" className="text-slate-400 hover:text-primary transition-colors">Hauts-de-Seine (92)</Link></li>
+              <li><Link href="/climatisation-seine-saint-denis" className="text-slate-400 hover:text-primary transition-colors">Seine-Saint-Denis (93)</Link></li>
+              <li><Link href="/climatisation-val-de-marne" className="text-slate-400 hover:text-primary transition-colors">Val-de-Marne (94)</Link></li>
+              <li><Link href="/zones-intervention" className="text-primary font-bold hover:text-white transition-colors">Voir les 8 départements →</Link></li>
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h3 className="font-heading font-semibold text-lg mb-6 text-white border-b border-white/10 pb-2 inline-block">Contact</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-gray-400">
-                <Phone className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
+            <h3 className="font-heading font-bold text-lg mb-6 text-white">
+              Contact
+            </h3>
+
+            <ul className="space-y-5">
+              <li className="flex items-start gap-3 text-slate-400">
+                <Phone className="w-5 h-5 text-primary shrink-0 mt-1" />
                 <div>
-                  <a href="tel:+33100000000" className="hover:text-secondary transition-colors block font-medium text-white">01 00 00 00 00</a>
-                  <span className="text-sm">Appel non surtaxé</span>
+                  <a href={`tel:${PHONE_LINK}`} className="block font-black text-white hover:text-primary transition-colors">
+                    {PHONE_DISPLAY}
+                  </a>
+                  <span className="text-sm">Appel direct</span>
                 </div>
               </li>
-              <li className="flex items-center gap-3 text-gray-400">
-                <Mail className="w-5 h-5 text-secondary shrink-0" />
-                <a href="mailto:contact@pointclim.fr" className="hover:text-secondary transition-colors">contact@pointclim.fr</a>
+
+              <li className="flex items-start gap-3 text-slate-400">
+                <MessageCircle className="w-5 h-5 text-[#25D366] shrink-0 mt-1" />
+                <div>
+                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="block font-black text-white hover:text-[#25D366] transition-colors">
+                    WhatsApp
+                  </a>
+                  <span className="text-sm">Devis instantané</span>
+                </div>
               </li>
-              <li className="flex items-center gap-3 text-gray-400">
-                <Clock className="w-5 h-5 text-secondary shrink-0" />
-                <span>Intervention 7j/7 en cas d'urgence</span>
+
+              <li className="flex items-start gap-3 text-slate-400">
+                <Mail className="w-5 h-5 text-primary shrink-0 mt-1" />
+                <a href={`mailto:${EMAIL}`} className="hover:text-primary transition-colors">
+                  {EMAIL}
+                </a>
+              </li>
+
+              <li className="flex items-start gap-3 text-slate-400">
+                <Clock className="w-5 h-5 text-primary shrink-0 mt-1" />
+                <span>Intervention 7j/7 en cas d’urgence</span>
+              </li>
+
+              <li className="flex items-start gap-3 text-slate-400">
+                <MapPin className="w-5 h-5 text-primary shrink-0 mt-1" />
+                <span>Île-de-France : 75, 77, 78, 91, 92, 93, 94, 95</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-sm">
+          <p className="text-slate-500 text-sm">
             © {currentYear} POINT CLIM — Tous droits réservés
           </p>
+
           <div className="flex flex-wrap gap-4 text-sm">
-            <Link href="/mentions-legales" className="text-gray-500 hover:text-white transition-colors">Mentions légales</Link>
-            <span className="text-gray-700">|</span>
-            <Link href="/politique-confidentialite" className="text-gray-500 hover:text-white transition-colors">Politique de confidentialité</Link>
+            <Link href="/mentions-legales" className="text-slate-500 hover:text-white transition-colors">
+              Mentions légales
+            </Link>
+            <span className="text-slate-700">|</span>
+            <Link href="/politique-confidentialite" className="text-slate-500 hover:text-white transition-colors">
+              Politique de confidentialité
+            </Link>
           </div>
         </div>
       </div>
