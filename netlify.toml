@@ -1,0 +1,7 @@
+[build]
+  command = "pnpm install --no-frozen-lockfile && pnpm --filter @workspace/point-clim build"
+  publish = "artifacts/point-clim/dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  PNPM_FLAGS = "--no-frozen-lockfile"
