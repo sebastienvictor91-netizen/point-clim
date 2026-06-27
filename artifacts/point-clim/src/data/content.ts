@@ -1,91 +1,64 @@
 export const APP_DATA = {
-  phone: "01 00 00 00 00",
+  phone: "01 75 29 52 34",
   email: "contact@pointclim.fr",
-  whatsapp: "33100000000",
+  whatsapp: "33623558263",
   companyName: "POINT CLIM",
 };
 
 export const SERVICES = [
   {
     id: "installation-climatisation",
-    title: "Installation de climatisation",
+    title: "Installation climatisation",
     path: "/installation-climatisation",
-    description: "Installation experte de systèmes de climatisation pour un confort optimal en toute saison.",
+    description: "Pose de climatisation murale, multisplit ou gainable pour particuliers et professionnels.",
     icon: "Fan",
-    image: "https://images.unsplash.com/photo-1527689638836-411945a2b57c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    features: ["Bilan thermique gratuit", "Conseil sur le choix du matériel", "Pose par des techniciens certifiés", "Mise en service et réglages"]
+    image: "/images/installation-climatisation.webp",
+    features: ["Étude du besoin", "Pose soignée", "Mise en service", "Conseil matériel"]
   },
   {
-    id: "climatisation-reversible",
-    title: "Climatisation réversible",
-    path: "/climatisation-reversible",
-    description: "La solution 2-en-1 : rafraîchissement en été et chauffage performant en hiver.",
-    icon: "ThermometerSun",
-    image: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    features: ["Économies d'énergie", "Confort thermique toute l'année", "Systèmes silencieux", "Design élégant s'intégrant à votre intérieur"]
+    id: "depannage-entretien-climatisation",
+    title: "Dépannage & entretien climatisation",
+    path: "/depannage-entretien-climatisation",
+    description: "Dépannage, entretien, nettoyage, recharge et diagnostic de climatisation.",
+    icon: "Wrench",
+    image: "/images/depannage-climatisation.webp",
+    features: ["Diagnostic panne", "Entretien annuel", "Nettoyage complet", "Recherche de fuite"]
   },
   {
     id: "pompes-a-chaleur",
     title: "Pompes à chaleur",
     path: "/pompes-a-chaleur",
-    description: "Installation de PAC air/air et air/eau. Optez pour un système de chauffage écologique et économique.",
+    description: "Installation, entretien et dépannage de PAC air/air et air/eau.",
     icon: "Leaf",
-    image: "https://images.unsplash.com/photo-1621415132223-952ec94db12a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    features: ["Étude de dimensionnement", "Remplacement chaudière fioul/gaz", "Accompagnement aides de l'État", "SAV et suivi"]
+    image: "/images/pompe-a-chaleur.webp",
+    features: ["PAC air/air", "PAC air/eau", "Entretien PAC", "Dépannage PAC"]
   },
   {
-    id: "entretien-climatisation",
-    title: "Entretien climatisation",
-    path: "/entretien-climatisation",
-    description: "Maintenez les performances de votre installation et prolongez sa durée de vie.",
-    icon: "Wrench",
-    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    features: ["Nettoyage des filtres", "Vérification des fluides frigorigènes", "Désinfection antibactérienne", "Contrôle d'étanchéité"]
-  },
-  {
-    id: "entretien-pompe-a-chaleur",
-    title: "Entretien pompe à chaleur",
-    path: "/entretien-pompe-a-chaleur",
-    description: "Maintenance obligatoire et préventive de votre pompe à chaleur.",
-    icon: "Settings",
-    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    features: ["Vérification des performances", "Contrôle compresseur", "Ajustement des paramètres", "Prévention des pannes"]
-  },
-  {
-    id: "depannage-climatisation",
-    title: "Dépannage climatisation",
-    path: "/depannage-climatisation",
-    description: "Intervention rapide pour toute panne de climatisation. Service d'urgence.",
-    icon: "AlertTriangle",
-    image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    features: ["Diagnostic panne précis", "Devis de réparation clair", "Intervention prioritaire", "Pièces de rechange certifiées"]
-  },
-  {
-    id: "depannage-pompe-a-chaleur",
-    title: "Dépannage pompe à chaleur",
-    path: "/depannage-pompe-a-chaleur",
-    description: "Votre pompe à chaleur est en panne ? Nous intervenons rapidement pour rétablir votre chauffage.",
-    icon: "Zap",
-    image: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    features: ["Recherche de fuite", "Remplacement pièces défectueuses", "Remise en service", "Conseils d'utilisation"]
+    id: "froid-frigorifique",
+    title: "Froid frigorifique camions",
+    path: "/froid-frigorifique-camions",
+    description: "Installation, entretien et dépannage de groupes frigorifiques pour camions et utilitaires.",
+    icon: "Truck",
+    image: "/images/camion-frigorifique.webp",
+    features: ["Camions frigorifiques", "Utilitaires", "Entretien", "Dépannage rapide"]
   },
   {
     id: "contrat-maintenance",
-    title: "Contrat de maintenance",
+    title: "Contrats de maintenance",
     path: "/contrat-maintenance",
-    description: "La tranquillité d'esprit avec nos contrats d'entretien annuels sur mesure.",
+    description: "Contrats d’entretien pour climatisation, PAC et installations professionnelles.",
     icon: "ClipboardCheck",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    features: ["Visite annuelle programmée", "Priorité d'intervention", "Main d'œuvre incluse sur dépannage", "Certificat d'étanchéité"]
+    image: "/images/entretien-climatisation.webp",
+    features: ["Visite annuelle", "Priorité dépannage", "Suivi régulier", "Prévention des pannes"]
   },
   {
     id: "climatisation-entreprises",
-    title: "Climatisation entreprises",
+    title: "Solutions entreprises",
     path: "/climatisation-entreprises",
-    description: "Solutions CVC adaptées aux locaux professionnels : bureaux, commerces, restaurants, santé.",
+    description: "Solutions CVC pour bureaux, commerces, restaurants, hôtels et locaux professionnels.",
     icon: "Building2",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    features: ["Étude thermique poussée", "Systèmes VRV / DRV", "Installation sans gêner l'activité", "Contrats de maintenance B2B"]
+    image: "/images/solutions-entreprises.webp",
+    features: ["Bureaux", "Commerces", "Restaurants", "VRV / DRV"]
   }
 ];
 

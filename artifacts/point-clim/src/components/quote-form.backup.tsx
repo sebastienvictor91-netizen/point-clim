@@ -51,55 +51,16 @@ export function QuoteForm() {
     },
   });
 
-  
-async function onSubmit(data: FormValues) {
-  const { error } = await supabase
-    .from("leads")
-    .insert([
-      {
-        nom: data.nom,
-        telephone: data.telephone,
-        email: data.email,
-        prestation: data.prestation,
-        departement: data.departement,
-        surface: data.surface,
-        message: data.message,
-      },
-    ]);
-
-  if (error) {
-    console.error(error);
-
+  function onSubmit(data: FormValues) {
+    console.log("Form submitted:", data);
     toast({
-      variant: "destructive",
-      title: "Erreur",
-      description: "Impossible d'envoyer votre demande.",
+      title: "Demande envoyée avec succès !",
+      description: "Notre équipe vous recontactera dans les plus brefs délais pour votre devis.",
     });
-
-    return;
+    form.reset();
   }
 
-  try {
-    await fetch("/.netlify/functions/send-lead", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-  } catch (emailError) {
-    console.error("EMAIL ERROR:", emailError);
-  }
-
-  toast({
-    title: "✅ Demande envoyée",
-    description: "Nous vous recontacterons rapidement.",
-  });
-
-  form.reset();
-}
-
-return (
+  return (
     <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 md:p-8">
       <div className="mb-6 text-center">
         <h3 className="text-2xl font-bold font-heading text-foreground mb-2">Demander un devis gratuit</h3>

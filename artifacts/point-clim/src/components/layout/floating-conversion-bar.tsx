@@ -3,12 +3,11 @@ import { Phone, MessageCircle } from "lucide-react";
 const PHONE_DISPLAY = "01 75 29 52 34";
 const PHONE_LINK = "+33175295234";
 const WHATSAPP_URL =
-  "https://wa.me/33623558263?text=Bonjour,%20je%20souhaite%20obtenir%20un%20devis%20pour%20une%20climatisation.";
+  "https://wa.me/33623558263?text=Bonjour,%20je%20souhaite%20obtenir%20un%20devis%20gratuit%20pour%20une%20climatisation.";
 
 export function FloatingConversionBar() {
   return (
     <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3">
-      {/* Appel principal */}
       <a
         href={`tel:${PHONE_LINK}`}
         aria-label="Appeler POINT CLIM"
@@ -20,7 +19,7 @@ export function FloatingConversionBar() {
 
         <span className="hidden text-left leading-tight sm:block">
           <span className="block text-xs font-semibold uppercase tracking-wide text-white/75">
-            Appel direct
+            Conseiller disponible
           </span>
           <span className="block text-base font-extrabold">
             {PHONE_DISPLAY}
@@ -28,24 +27,23 @@ export function FloatingConversionBar() {
         </span>
       </a>
 
-      {/* WhatsApp secondaire */}
       <a
         href={WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Contacter POINT CLIM sur WhatsApp"
-        className="group flex items-center gap-3 rounded-full border border-emerald-200 bg-white px-5 py-3.5 text-slate-900 shadow-[0_14px_35px_rgba(15,23,42,0.16)] transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-[0_18px_45px_rgba(15,23,42,0.22)]"
+        aria-label="Obtenir un devis gratuit sur WhatsApp"
+        className="group flex items-center gap-3 rounded-full bg-[#25D366] px-5 py-3.5 text-white shadow-[0_18px_45px_rgba(37,211,102,0.35)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#20bd5a] hover:shadow-[0_22px_55px_rgba(37,211,102,0.45)]"
       >
-        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white">
-          <MessageCircle className="h-5 w-5" />
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#25D366]">
+          <MessageCircle className="h-6 w-6" />
         </span>
 
         <span className="hidden text-left leading-tight sm:block">
-          <span className="block text-xs font-semibold uppercase tracking-wide text-slate-400">
-            Message
+          <span className="block text-xs font-bold uppercase tracking-wide text-white/80">
+            Devis gratuit
           </span>
-          <span className="block text-sm font-extrabold text-slate-900">
-            WhatsApp
+          <span className="block text-sm font-extrabold">
+            Réponse immédiate
           </span>
         </span>
       </a>

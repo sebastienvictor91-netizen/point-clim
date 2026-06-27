@@ -6,6 +6,8 @@ import NotFound from "@/pages/not-found";
 
 import Home from "@/pages/home";
 import ServicePage from "@/pages/service-page";
+import PompesAChaleurPage from "@/pages/pompes-a-chaleur";
+import FroidFrigorifiqueCamionsPage from "@/pages/froid-frigorifique-camions";
 import DepartmentPage from "@/pages/department-page";
 import CityPage from "@/pages/city-page";
 import ZonesPage from "@/pages/zones-page";
@@ -22,7 +24,12 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      
+
+      <Route
+        path="/pompes-a-chaleur"
+        component={PompesAChaleurPage}
+      />
+
       {/* Service Pages */}
       {SERVICES.map((service) => (
         <Route key={service.id} path={service.path}>
@@ -35,7 +42,10 @@ function Router() {
       <Route path="/qui-sommes-nous" component={AboutPage} />
       <Route path="/contact" component={ContactPage} />
       <Route path="/mentions-legales" component={LegalPage} />
-      <Route path="/politique-confidentialite" component={PrivacyPage} />
+      <Route
+        path="/politique-confidentialite"
+        component={PrivacyPage}
+      />
 
       {/* Department Pages */}
       {DEPARTMENTS.map((dept) => (
@@ -47,7 +57,9 @@ function Router() {
       {/* City Pages */}
       {CITIES.map((city) => (
         <Route key={city.name} path={city.path}>
-          <CityPage name={city.name.toLowerCase().replace(/ /g, '-')} />
+          <CityPage
+            name={city.name.toLowerCase().replace(/ /g, "-")}
+          />
         </Route>
       ))}
 

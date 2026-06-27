@@ -428,7 +428,7 @@ export default function Home() {
             <iframe
               width="100%"
               height="100%"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              src="https://www.youtube.com/embed/f5K5VQd52n8?autoplay=1&mute=1&loop=1&playlist=f5K5VQd52n8&controls=1&rel=0&modestbranding=1"
               title="POINT CLIM — Confort thermique Île-de-France"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
