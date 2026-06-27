@@ -65,7 +65,14 @@ function Router() {
         </Route>
       ))}
 
-      <Route component={NotFound} />
+      <Route>
+        {() => {
+          const slug = window.location.pathname.replace(/^\//, "").replace(/\/$/, "");
+          const seoPage = SEO_PAGES.find((p) => p.slug === slug);
+
+          return seoPage ? <LocalSeoPage slug={slug} /> : <NotFound />;
+        }}
+      </Route>
     </Switch>
   );
 }
