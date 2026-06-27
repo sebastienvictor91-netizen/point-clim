@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://pointclim.netlify.app/sitemap.xml
