@@ -1,3 +1,5 @@
+import { SEO_PAGES } from "@/data/seo-pages";
+import { LocalSeoPage } from "@/pages/local-seo-page";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
