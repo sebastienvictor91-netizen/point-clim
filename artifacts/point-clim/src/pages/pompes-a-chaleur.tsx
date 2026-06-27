@@ -47,7 +47,7 @@ export default function PompesAChaleurPage() {
               <Button size="lg" className="h-14 rounded-full bg-[#25D366] px-8 font-black text-white hover:bg-[#20bd5a]" asChild>
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 h-5 w-5" />
-                  WhatsApp
+                  Devis immédiat
                 </a>
               </Button>
 

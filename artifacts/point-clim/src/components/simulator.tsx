@@ -282,7 +282,7 @@ export function Simulator() {
                       asChild
                     >
                       <a href="https://wa.me/33623558263" target="_blank" rel="noopener noreferrer" data-testid="button-simulator-whatsapp">
-                        Discuter sur WhatsApp
+                        Discuter sur Devis immédiat
                       </a>
                     </Button>
                   </div>

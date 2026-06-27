@@ -72,7 +72,7 @@ const FAQ = [
   },
   {
     q: "Vos devis sont-ils gratuits ?",
-    a: "Oui, tous nos devis sont gratuits et sans engagement. Contactez-nous par téléphone, WhatsApp ou formulaire.",
+    a: "Oui, tous nos devis sont gratuits et sans engagement. Contactez-nous par téléphone, Devis immédiat ou formulaire.",
   },
   {
     q: "Intervenez-vous pour les entreprises et commerces ?",
@@ -191,7 +191,7 @@ export default function Home() {
                   data-testid="button-hero-whatsapp"
                 >
                   <MessageCircle className="w-5 h-5 mr-2" />
-                  WhatsApp
+                  Devis immédiat
                 </a>
               </Button>
 
@@ -657,7 +657,7 @@ export default function Home() {
                   data-testid="button-cta-whatsapp"
                 >
                   <MessageCircle className="w-5 h-5 mr-2" />
-                  WhatsApp
+                  Devis immédiat
                 </a>
               </Button>
 
@@ -691,7 +691,7 @@ export default function Home() {
           rel="noopener noreferrer"
           className="flex-1 h-12 rounded-full bg-[#25D366] text-white font-semibold flex items-center justify-center shadow-xl"
         >
-          WhatsApp
+          Devis immédiat
         </a>
       </div>
     </Layout>

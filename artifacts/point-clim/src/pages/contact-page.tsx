@@ -77,7 +77,7 @@ export default function ContactPage() {
                 >
                   <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="mr-2 h-5 w-5" />
-                    WhatsApp
+                    Devis immédiat
                   </a>
                 </Button>
               </div>
@@ -125,7 +125,7 @@ export default function ContactPage() {
                     </span>
                     <span>
                       <span className="block text-xs font-semibold uppercase text-emerald-600">
-                        WhatsApp
+                        Devis immédiat
                       </span>
                       <span className="block text-xl font-black text-slate-950">
                         Devis instantané
@@ -247,7 +247,7 @@ export default function ContactPage() {
                   {
                     icon: Zap,
                     title: "Réactivité",
-                    text: "Contact rapide par téléphone ou WhatsApp pour qualifier votre besoin et vous orienter.",
+                    text: "Contact rapide par téléphone ou Devis immédiat pour qualifier votre besoin et vous orienter.",
                   },
                 ].map(({ icon: Icon, title, text }) => (
                   <div key={title} className="flex gap-4 rounded-2xl bg-white p-5 shadow-sm">

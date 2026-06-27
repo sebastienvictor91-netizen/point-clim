@@ -65,7 +65,7 @@ Obtenir un devis gratuit
 <Button size="lg" className="h-14 px-8 rounded-xl bg-[#25D366] hover:bg-[#22c55e] text-white border-0" asChild>
 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
 <MessageCircle className="w-5 h-5 mr-2" />
-WhatsApp
+Devis immédiat
 </a>
 </Button>
 
@@ -151,7 +151,7 @@ Nos techniciens sont disponibles pour vous répondre rapidement.
 <Button size="lg" className="w-full font-bold bg-[#25D366] hover:bg-[#22c55e] text-white border-0" asChild>
 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
 <MessageCircle className="w-5 h-5 mr-2" />
-WhatsApp
+Devis immédiat
 </a>
 </Button>
 </div>

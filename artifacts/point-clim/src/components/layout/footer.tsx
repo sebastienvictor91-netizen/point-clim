@@ -88,7 +88,7 @@ export function Footer() {
                 <MessageCircle className="w-5 h-5 text-[#25D366] shrink-0 mt-1" />
                 <div>
                   <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="block font-black text-white hover:text-[#25D366] transition-colors">
-                    WhatsApp
+                    Devis immédiat
                   </a>
                   <span className="text-sm">Devis instantané</span>
                 </div>
