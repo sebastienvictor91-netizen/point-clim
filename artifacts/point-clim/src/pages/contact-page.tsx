@@ -190,7 +190,7 @@ export default function ContactPage() {
               <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#25D366] text-white">
                 <MessageCircle className="h-8 w-8" />
               </div>
-              <h3 className="mb-2 text-xl font-black">WhatsApp</h3>
+              <h3 className="mb-2 text-xl font-black">Devis immédiat</h3>
               <p className="mb-5 text-sm leading-relaxed text-slate-500">
                 Envoyez vos photos, votre besoin ou votre adresse.
               </p>

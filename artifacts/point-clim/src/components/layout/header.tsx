@@ -248,7 +248,7 @@ export function Header() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <MessageCircle className="h-5 w-5 shrink-0" />
-                <span>Réponse immédiate</span>
+                <span>Devis immédiat</span>
               </a>
             </div>
 
