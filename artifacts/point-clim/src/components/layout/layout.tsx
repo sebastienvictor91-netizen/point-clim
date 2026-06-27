@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Header } from "./header";
 import { Footer } from "./footer";
-import { FloatingConversionBar } from "./floating-conversion-bar";
+
 
 interface LayoutProps {
   children: ReactNode;
@@ -15,7 +15,7 @@ export function Layout({ children }: LayoutProps) {
         {children}
       </main>
       <Footer />
-      <FloatingConversionBar />
+      
     </div>
   );
 }
