@@ -39,6 +39,20 @@ function Router() {
         </Route>
       ))}
 
+
+      {/* Alias services footer */}
+      <Route path="/depannage-climatisation">
+        <ServicePage id="depannage-entretien-climatisation" />
+      </Route>
+
+      <Route path="/entretien-climatisation">
+        <ServicePage id="depannage-entretien-climatisation" />
+      </Route>
+
+      <Route path="/climatisation-reversible">
+        <ServicePage id="installation-climatisation" />
+      </Route>
+
       <Route path="/realisations" component={ShowcasePage} />
       <Route path="/zones-intervention" component={ZonesPage} />
       <Route path="/qui-sommes-nous" component={AboutPage} />
